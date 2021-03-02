@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using GoogleMobileAds.Api;
 
-public class Basla : MonoBehaviour
+public class Buton : MonoBehaviour
 {
     private InterstitialAd gecisReklam;
 
@@ -20,19 +18,21 @@ public class Basla : MonoBehaviour
         gecisReklam.LoadAd(YeniReklam);
     }
 
-    public void basla()
+    public void Yeniden()
     {
         if (gecisReklam.IsLoaded())
         {
             gecisReklam.Show();
         }
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void cık()
+    public void Cık()
     {
-        Application.Quit();
+        if (gecisReklam.IsLoaded())
+        {
+            gecisReklam.Show();
+        }
+        SceneManager.LoadScene("AnaMenu");
     }
-  
 }
