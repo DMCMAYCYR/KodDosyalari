@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZeminMove : MonoBehaviour
+public class ZeminYukari : MonoBehaviour
 {
-    [Header("truesağgider")]
+    [Header("trueyukarıgider")]
     public bool dirRight;
     public float speed = 2.0f;
     public float ArtıMesafe;
@@ -15,24 +15,24 @@ public class ZeminMove : MonoBehaviour
     void Update()
     {
         if (dirRight)
-            transform.Translate(Vector2.right * speed * Time.deltaTime, Space.World);
+            transform.Translate(Vector2.up * speed * Time.deltaTime, Space.World);
         else
-            transform.Translate(-Vector2.right * speed * Time.deltaTime, Space.World);
+            transform.Translate(-Vector2.up * speed * Time.deltaTime, Space.World);
 
-        if (transform.position.x >= ArtıMesafe)
+        if (transform.position.y >= ArtıMesafe)
             dirRight = false;
-        
 
-        else if (transform.position.x <= -EksiMesafe)
+
+        else if (transform.position.y <= -EksiMesafe)
             dirRight = true;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag=="Player")
+        if (collision.gameObject.tag == "Player")
         {
             player.transform.parent = transform;
         }
-        if (collision.gameObject.tag=="Kutu")
+        if (collision.gameObject.tag == "Kutu")
         {
             kutu.transform.parent = transform;
         }
